@@ -85,20 +85,39 @@
         while (p1.getVida()>0 && p2.getVida()>0) {
 
             Console.WriteLine($"-----------------RONDA {turno}------------------");
-            Console.WriteLine($"{p1.getNombre()} ataca a {p2.getNombre()}");
+
+            Console.Write($"{p1.getNombre()} ataca a {p2.getNombre()}. ");
+
+            if (p1.getVida()==0) {
+                Console.WriteLine("Ha muerto.");
+            }
+            else{
+                Console.WriteLine("");
+            }
             p1.atacar(p2);
 
-            Console.WriteLine($"{p2.getNombre()} ataca a {p1.getNombre()}");
+            Console.Write($"{p2.getNombre()} ataca a {p1.getNombre()}. ");
+
+            if (p2.getVida()==0) {
+                Console.WriteLine("Ha muerto.");
+            }
+            else {
+                Console.WriteLine("");
+            }
+
             p2.atacar(p1);
+
             Console.WriteLine("");
             turno++;
         }
 
         if (p1.getVida()==0 && p2.getVida()>0) {
+            Console.WriteLine($"{p1.getNombre()} ha muerto");
             return p2;
         }
 
         else if (p1.getVida()>0 && p2.getVida()==0) {
+            Console.WriteLine($"{p2.getNombre()} ha muerto");
             return p1;         
         }
 
